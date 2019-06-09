@@ -5,18 +5,31 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state ={
-      view : "new",
-      jobs : [],
-      newCount :0,
-      appliedCount:0,
-      interviewedCount:0
-
+      view: "new",
+      jobs: [],
+      newCount: 0,
+      appliedCount: 0,
+      interviewedCount: 0
     }
   }
 
-  createJob = (jobDetails) =>
-  {
-    console.log("this is a create job ");
+  createJob = (job) => {
+    fetch('http://localhost:3000/jobs', {
+      body:JSON.stringify(job),
+      method:'POST',
+      headers:{
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    }).then(createdJob => createdJob.json())
+    .then(jData => {
+      if(this.state.view === 'new'){
+        this.setState({
+          jobs: [...this.state.jobs, jData],
+          newCount: this.state.newCount + 1
+        })
+      }
+    })
   }
 
   render() {
