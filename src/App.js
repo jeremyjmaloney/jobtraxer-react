@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Form from './components/Form.js'
+import JobList from './components/JobList.js'
 
 class App extends Component {
   constructor(props){
@@ -23,6 +24,7 @@ class App extends Component {
       }
     }).then(createdJob => createdJob.json())
     .then(jData => {
+      console.log(jData);
       if(this.state.view === 'new'){
         this.setState({
           jobs: [...this.state.jobs, jData],
@@ -31,13 +33,24 @@ class App extends Component {
       }
     })
   }
-
+  handleJob = (view) => {
+    console.log('this is handleJob')
+  }
+  deleteJob = (id) => {
+    console.log('this is deleteJob')
+  }
   render() {
     return (
-        <div>
+      <div>
         <h1>JobTraxer</h1>
         <Form createJob = {this.createJob}/>
-        </div>
+        <JobList
+          view={this.state.view}
+          jobs={this.state.jobs}
+          handleJob={this.handleJob}
+          deleteJob={this.deleteJob}
+        />
+      </div>
     )
   }
 }
