@@ -16,6 +16,17 @@ class Form extends Component {
   handleSubmit =(event) =>{
     console.log(event);
     event.preventDefault();
+    this.props.createJob(this.state);
+    this.clearForm();
+
+  }
+
+  clearForm = () =>{
+    this.setState({
+      title:"",
+      company:"",
+      link:""
+    })
   }
 
   handleTitleInput= (event) =>{
@@ -64,7 +75,7 @@ class Form extends Component {
 
           onChange ={this.handleLinkInput}
         />
-        <input type="submit" value="ADD"/> 
+        <input type="submit" value="ADD"/>
       </form>
 
 

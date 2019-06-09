@@ -14,13 +14,16 @@ class App extends Component {
     }
   }
 
-
+  createJob = (jobDetails) =>
+  {
+    console.log("this is a create job ");
+  }
 
   render() {
     return (
         <div>
         <h1>JobTraxer</h1>
-        <Form />
+        <Form createJob = {this.createJob}/>
         </div>
     )
   }
