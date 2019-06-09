@@ -41,7 +41,7 @@ class App extends Component {
           }
 
           this.setState({
-            jobs: jData,
+            jobs: jData
           })
       })
 
@@ -94,8 +94,15 @@ class App extends Component {
   deleteJob = (id) => {
     console.log('this is deleteJob')
   }
+
+  componentDidMount() {
+     this.fetchJobs(this.state.view)
+  }
+
   render() {
+
     return (
+
       <div>
         <h1>JobTraxer</h1>
         <Form createJob = {this.createJob}/>
