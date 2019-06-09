@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Header from './components/Header.js'
 import Form from './components/Form.js'
 import JobList from './components/JobList.js'
 
@@ -57,7 +58,6 @@ class App extends Component {
       }
     }).then(createdJob => createdJob.json())
     .then(jData => {
-      console.log(jData);
       if(this.state.view === 'new'){
         this.setState({
           jobs: [...this.state.jobs, jData],
@@ -80,7 +80,6 @@ class App extends Component {
       }
     }).then (data => data.json())
     .then(jData => {
-      console.log(jData);
       this.setState({
         jobs : []
 
@@ -91,8 +90,15 @@ class App extends Component {
     })
   }
 
-  deleteJob = (id) => {
-    console.log('this is deleteJob')
+  deleteJob = (job, jobsArray, index) => {
+    fetch(`http://localhost:3000/jobs/${job.id}`, {
+      method: 'DELETE'
+    }).then(data => {
+      jobsArray.splice(index, 1)
+      this.setState({
+        jobs: jobsArray
+      })
+    }).catch(error => console.log(error))
   }
 
   componentDidMount() {
@@ -105,6 +111,7 @@ class App extends Component {
 
       <div>
         <h1>JobTraxer</h1>
+        <Header />
         <Form createJob = {this.createJob}/>
         <JobList
           view={this.state.view}

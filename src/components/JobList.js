@@ -13,6 +13,7 @@ class JobList extends Component {
                 <button onClick={() => {this.props.handleJob('new',job)}}>New</button>
                 <button onClick={() => {this.props.handleJob('applied',job)}}>Applied</button>
                 <button onClick={() => {this.props.handleJob('interviewed',job)}}>Interviewed</button>
+                <button onClick={()=>{this.props.deleteJob(job, this.props.jobs, index)}}>X</button>
               </h4>
             </div>
           )
