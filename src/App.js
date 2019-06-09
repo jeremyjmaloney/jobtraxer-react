@@ -14,6 +14,39 @@ class App extends Component {
     }
   }
 
+  fetchJobs = (view) =>{
+    fetch('http://localhost:3000/jobs/' + view,
+      {
+        method: 'GET'
+
+      })
+      .then (data => data.json())
+      .then(jData => {
+          console.log(jData);
+          let countViewName;
+          if(view === 'new'){
+            this.setState({
+              newCount: this.state.newCount + 1
+            })
+          }
+          else if(view === 'applied'){
+            this.setState({
+              appliedCount: this.state.appliedCount + 1
+            })
+          }
+          else if(view === 'interviewed'){
+            this.setState({
+              interviewedCount: this.state.interviewedCount + 1
+            })
+          }
+
+          this.setState({
+            jobs: jData,
+          })
+      })
+
+  }
+
   createJob = (job) => {
     fetch('http://localhost:3000/jobs', {
       body:JSON.stringify(job),
@@ -33,9 +66,31 @@ class App extends Component {
       }
     })
   }
-  handleJob = (view) => {
-    console.log('this is handleJob')
+
+  handleJob = (view, job) => {
+  console.log('this is handleJob ', view , job );
+  job.status = view;
+  fetch('http://localhost:3000/jobs/' + job.id,
+    {
+      body:JSON.stringify(job),
+      method: 'PUT',
+      headers:{
+        'Accept': 'application/json, text/plain, */*',
+        'Content-Type': 'application/json'
+      }
+    }).then (data => data.json())
+    .then(jData => {
+      console.log(jData);
+      this.setState({
+        jobs : []
+
+      });
+
+      this.fetchJobs(this.state.view);
+
+    })
   }
+
   deleteJob = (id) => {
     console.log('this is deleteJob')
   }
