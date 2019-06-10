@@ -18,36 +18,37 @@ class App extends Component {
   }
 
   fetchJobs = (view) =>{
-    fetch( URL + view,
+    fetch( URL,
       {
         method: 'GET'
 
       })
       .then (data => data.json())
       .then(jData => {
-          console.log(jData);
-
+        let newData = jData.filter(job.status === 'new')
+        let appliedData = jData.filter(job.status === 'applied')
+        let interviewedData = jData.filter(job.status === 'interviewed')
           if(view === 'new'){
             this.setState({
-              newCount: this.state.newCount + 1
+              jobs: newData
             })
           }
           else if(view === 'applied'){
             this.setState({
-              appliedCount: this.state.appliedCount + 1
+              jobs: appliedData
             })
           }
           else if(view === 'interviewed'){
             this.setState({
-              interviewedCount: this.state.interviewedCount + 1
+              jobs: interviewedData
             })
           }
-
           this.setState({
-            jobs: jData
+            newCount: newData.length,
+            appliedCount: appliedData.length,
+            interviewedCount: interviewedData.length
           })
       })
-
   }
 
   createJob = (job) => {
