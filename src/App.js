@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import Header from './components/Header.js'
-import Form from './components/Form.js'
-import JobList from './components/JobList.js'
+import Header from './components/Header.js';
+import Form from './components/Form.js';
+import JobList from './components/JobList.js';
+import './App.css';
 
 class App extends Component {
   constructor(props){
@@ -106,7 +107,7 @@ class App extends Component {
       view : goToView,
       jobs : []
     });
-  
+
     this.fetchJobs(goToView)
   }
 
@@ -115,19 +116,14 @@ class App extends Component {
   }
 
   render() {
-
     return (
-
-      <div>
+      <div className='container'>
         <h1>JobTraxer</h1>
+        <Form createJob = {this.createJob}/>
         <Header
           handleView = {this.handleView}
           view = {this.state.view}
-
         />
-
-        <Form createJob = {this.createJob}/>
-
         <JobList
           view={this.state.view}
           jobs={this.state.jobs}
