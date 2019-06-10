@@ -6,6 +6,7 @@ class Header extends Component {
       <div className='header'>
         <button className='headerbtn' onClick={() => {this.props.handleView('new')}}>{this.props.newCount} NEW </button>
         <button className='headerbtn' onClick={() => {this.props.handleView('applied')}}>{this.props.appliedCount} APPLIED </button>
+        <button className='headerbtn' onClick={() => {this.props.handleView('followUp')}}>{this.props.followUpCount} FOLLOW UP </button>
         <button className='headerbtn' onClick={() => {this.props.handleView('interviewed')}}>{this.props.interviewedCount} INTERVIEWED </button>
       </div>
     )

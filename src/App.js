@@ -13,6 +13,7 @@ class App extends Component {
       jobs: [],
       newCount: 0,
       appliedCount: 0,
+      followUpCount:0,
       interviewedCount: 0
     }
   }
@@ -30,6 +31,9 @@ class App extends Component {
         let appliedData = jData.filter((job)=>{
           return job.status === 'applied'
         })
+        let followUpData = jData.filter((job)=>{
+          return job.status === 'followUp'
+        })
         let interviewedData = jData.filter((job)=>{
           return job.status === 'interviewed'
         })
@@ -43,6 +47,11 @@ class App extends Component {
             jobs: appliedData
           })
         }
+        else if(view === 'followUp'){
+          this.setState({
+            jobs: followUpData
+          })
+        }
         else if(view === 'interviewed'){
           this.setState({
             jobs: interviewedData
@@ -51,6 +60,7 @@ class App extends Component {
         this.setState({
           newCount: newData.length,
           appliedCount: appliedData.length,
+          followUpCount: followUpData.length,
           interviewedCount: interviewedData.length
         })
       })
@@ -132,6 +142,7 @@ class App extends Component {
           view = {this.state.view}
           newCount={this.state.newCount}
           appliedCount={this.state.appliedCount}
+          followUpCount={this.state.followUpCount}
           interviewedCount={this.state.interviewedCount}
         />
         <JobList
