@@ -21,33 +21,38 @@ class App extends Component {
     fetch( URL,
       {
         method: 'GET'
-
       })
       .then (data => data.json())
       .then(jData => {
-        let newData = jData.filter(job.status === 'new')
-        let appliedData = jData.filter(job.status === 'applied')
-        let interviewedData = jData.filter(job.status === 'interviewed')
-          if(view === 'new'){
-            this.setState({
-              jobs: newData
-            })
-          }
-          else if(view === 'applied'){
-            this.setState({
-              jobs: appliedData
-            })
-          }
-          else if(view === 'interviewed'){
-            this.setState({
-              jobs: interviewedData
-            })
-          }
+        let newData = jData.filter((job)=>{
+          return job.status === 'new'
+        })
+        let appliedData = jData.filter((job)=>{
+          return job.status === 'applied'
+        })
+        let interviewedData = jData.filter((job)=>{
+          return job.status === 'interviewed'
+        })
+        if(view === 'new'){
           this.setState({
-            newCount: newData.length,
-            appliedCount: appliedData.length,
-            interviewedCount: interviewedData.length
+            jobs: newData
           })
+        }
+        else if(view === 'applied'){
+          this.setState({
+            jobs: appliedData
+          })
+        }
+        else if(view === 'interviewed'){
+          this.setState({
+            jobs: interviewedData
+          })
+        }
+        this.setState({
+          newCount: newData.length,
+          appliedCount: appliedData.length,
+          interviewedCount: interviewedData.length
+        })
       })
   }
 
@@ -125,6 +130,9 @@ class App extends Component {
         <Header
           handleView = {this.handleView}
           view = {this.state.view}
+          newCount={this.state.newCount}
+          appliedCount={this.state.appliedCount}
+          interviewedCount={this.state.interviewedCount}
         />
         <JobList
           view={this.state.view}
