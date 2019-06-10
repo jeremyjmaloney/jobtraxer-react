@@ -86,7 +86,6 @@ class App extends Component {
   }
 
   handleJob = (view, job) => {
-  console.log('this is handleJob ', view , job );
   job.status = view;
   fetch(URL + job.id,
     {
@@ -100,11 +99,8 @@ class App extends Component {
     .then(jData => {
       this.setState({
         jobs : []
-
       });
-
       this.fetchJobs(this.state.view);
-
     })
   }
 
@@ -117,6 +113,23 @@ class App extends Component {
         jobs: jobsArray
       })
     }).catch(error => console.log(error))
+    if(this.state.view === 'new'){
+      this.setState({
+        newCount: this.state.newCount - 1
+      })
+    } else if (this.state.view === 'applied') {
+      this.setState({
+        appliedCount: this.state.appliedCount - 1
+      })
+    } else if (this.state.view === 'followUp') {
+      this.setState({
+        followUpCount: this.state.followUpCount - 1
+      })
+    } else {
+      this.setState({
+        interviewedCount: this.state.interviewedCount - 1
+      })
+    }
   }
 
   handleView = (goToView) => {
