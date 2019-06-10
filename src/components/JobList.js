@@ -7,7 +7,7 @@ class JobList extends Component {
         {this.props.jobs.map((job, index) => {
           return (
             <div className="job" key={index}>
-              <h4>{job.title} | {job.company} | <a href={job.link} target="_blank">LINK</a> |
+              <h4>{job.title} | {job.company} | <a href={job.link} target="_blank" rel="noopener noreferrer">LINK</a> |
                 <button className='green' onClick={() =>
                 {this.props.handleJob('new',job)}}>NEW</button>
 
@@ -22,7 +22,7 @@ class JobList extends Component {
                 {this.props.view === 'interviewed' ?
                 <button className='green' onClick={() => {this.props.handleJob('interviewed',job)}}>INTERVIEWED</button>
                 : <button onClick={() => {this.props.handleJob('interviewed',job)}}>INTERVIEWED</button>}
-                
+
                 <button className='delete' onClick={()=>{this.props.deleteJob(job, this.props.jobs, index)}}>X</button>
               </h4>
             </div>
