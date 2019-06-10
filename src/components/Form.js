@@ -52,7 +52,7 @@ class Form extends Component {
           name="title"
           value={this.state.title}
           placeholder="Job Title"
-
+          autocomplete="off"
           onChange ={this.handleTitleInput}
         />
         <input
@@ -60,7 +60,7 @@ class Form extends Component {
           name="company"
           value={this.state.company}
           placeholder="Company Name"
-
+          autocomplete="off"
           onChange ={this.handleCompanyInput}
         />
         <input
@@ -68,7 +68,7 @@ class Form extends Component {
           name="link"
           value={this.state.link}
           placeholder="Link to the Job listing"
-
+          autocomplete="off"
           onChange ={this.handleLinkInput}
         />
         <input type="submit" value="ADD"/>

@@ -8,10 +8,21 @@ class JobList extends Component {
           return (
             <div className="job" key={index}>
               <h4>{job.title} | {job.company} | <a href={job.link} target="_blank">LINK</a> |
-                <button onClick={() => {this.props.handleJob('new',job)}}>New</button>
-                <button onClick={() => {this.props.handleJob('applied',job)}}>Applied</button>
-                <button onClick={() => {this.props.handleJob('followUp',job)}}>Follow Up</button>
-                <button onClick={() => {this.props.handleJob('interviewed',job)}}>Interviewed</button>
+                <button className='green' onClick={() =>
+                {this.props.handleJob('new',job)}}>NEW</button>
+
+                {this.props.view === 'applied' || this.props.view === 'followUp' || this.props.view === 'interviewed' ?
+                <button className='green' onClick={() => {this.props.handleJob('applied',job)}}>APPLIED</button>
+                : <button onClick={() => {this.props.handleJob('applied',job)}}>APPLIED</button>}
+
+                {this.props.view === 'followUp' || this.props.view === 'interviewed'?
+                <button className='green' onClick={() => {this.props.handleJob('followUp',job)}}>FOLLOW UP</button>
+                : <button onClick={() => {this.props.handleJob('followUp',job)}}>FOLLOW UP</button>}
+
+                {this.props.view === 'interviewed' ?
+                <button className='green' onClick={() => {this.props.handleJob('interviewed',job)}}>INTERVIEWED</button>
+                : <button onClick={() => {this.props.handleJob('interviewed',job)}}>INTERVIEWED</button>}
+                
                 <button className='delete' onClick={()=>{this.props.deleteJob(job, this.props.jobs, index)}}>X</button>
               </h4>
             </div>
