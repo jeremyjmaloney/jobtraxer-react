@@ -24,7 +24,7 @@ class App extends Component {
       .then (data => data.json())
       .then(jData => {
           console.log(jData);
-          let countViewName;
+
           if(view === 'new'){
             this.setState({
               newCount: this.state.newCount + 1
@@ -101,6 +101,15 @@ class App extends Component {
     }).catch(error => console.log(error))
   }
 
+  handleView = (goToView) => {
+    this.setState({
+      view : goToView,
+      jobs : []
+    });
+  
+    this.fetchJobs(goToView)
+  }
+
   componentDidMount() {
      this.fetchJobs(this.state.view)
   }
@@ -111,8 +120,14 @@ class App extends Component {
 
       <div>
         <h1>JobTraxer</h1>
-        <Header />
+        <Header
+          handleView = {this.handleView}
+          view = {this.state.view}
+
+        />
+
         <Form createJob = {this.createJob}/>
+
         <JobList
           view={this.state.view}
           jobs={this.state.jobs}
