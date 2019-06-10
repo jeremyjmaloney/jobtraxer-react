@@ -51,7 +51,7 @@ class App extends Component {
   }
 
   createJob = (job) => {
-    fetch('http://localhost:3000/jobs', {
+    fetch(URL, {
       body:JSON.stringify(job),
       method:'POST',
       headers:{
@@ -72,7 +72,7 @@ class App extends Component {
   handleJob = (view, job) => {
   console.log('this is handleJob ', view , job );
   job.status = view;
-  fetch('http://localhost:3000/jobs/' + job.id,
+  fetch(URL + job.id,
     {
       body:JSON.stringify(job),
       method: 'PUT',
@@ -93,7 +93,7 @@ class App extends Component {
   }
 
   deleteJob = (job, jobsArray, index) => {
-    fetch(`http://localhost:3000/jobs/${job.id}`, {
+    fetch(URL + job.id, {
       method: 'DELETE'
     }).then(data => {
       jobsArray.splice(index, 1)
