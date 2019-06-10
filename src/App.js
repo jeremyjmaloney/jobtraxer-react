@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   fetchJobs = (view) =>{
-    fetch('http://localhost:3000/jobs/' + view,
+    fetch('https://jobtraxer-rails.herokuapp.com/jobs/' + view,
       {
         method: 'GET'
 
