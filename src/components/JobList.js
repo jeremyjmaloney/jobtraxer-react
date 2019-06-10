@@ -4,16 +4,14 @@ class JobList extends Component {
   render() {
     return (
       <div className="joblist">
-        <h3>Job Title | Company | Job Listing Link</h3>
         {this.props.jobs.map((job, index) => {
-          console.log("Jobs list after applied" , job );
           return (
             <div className="job" key={index}>
-              <h4>{job.title} | {job.company} | {job.link} ||
+              <h4>{job.title} | {job.company} | <a href={job.link} target="_blank">LINK</a> |
                 <button onClick={() => {this.props.handleJob('new',job)}}>New</button>
                 <button onClick={() => {this.props.handleJob('applied',job)}}>Applied</button>
                 <button onClick={() => {this.props.handleJob('interviewed',job)}}>Interviewed</button>
-                <button onClick={()=>{this.props.deleteJob(job, this.props.jobs, index)}}>X</button>
+                <button className='delete' onClick={()=>{this.props.deleteJob(job, this.props.jobs, index)}}>X</button>
               </h4>
             </div>
           )

@@ -8,16 +8,13 @@ class Form extends Component {
       company:"",
       link:"",
       status:"new"
-
     }
-
   }
   handleSubmit =(event) =>{
     console.log(event);
     event.preventDefault();
     this.props.createJob(this.state);
     this.clearForm();
-
   }
 
   clearForm = () =>{
@@ -49,7 +46,7 @@ class Form extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form className='form' onSubmit={this.handleSubmit}>
         <input
           type="text"
           name="title"
@@ -76,9 +73,6 @@ class Form extends Component {
         />
         <input type="submit" value="ADD"/>
       </form>
-
-
-
     )
   }
 }
