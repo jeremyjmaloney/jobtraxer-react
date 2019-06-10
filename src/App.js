@@ -3,6 +3,7 @@ import Header from './components/Header.js';
 import Form from './components/Form.js';
 import JobList from './components/JobList.js';
 import './App.css';
+const URL = 'https://jobtraxer-rails.herokuapp.com/jobs/';
 
 class App extends Component {
   constructor(props){
@@ -17,7 +18,7 @@ class App extends Component {
   }
 
   fetchJobs = (view) =>{
-    fetch('https://jobtraxer-rails.herokuapp.com/jobs/' + view,
+    fetch( URL + view,
       {
         method: 'GET'
 
