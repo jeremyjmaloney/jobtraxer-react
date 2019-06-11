@@ -1,68 +1,32 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Jobtraxer application
 
-## Available Scripts
+http://jobtraxer.herokuapp.com/
 
-In the project directory, you can run:
+## Description
+Jobtraxer is a full-stack application where user can add and track the progress of their job search.
 
-### `npm start`
+## Technologies used
+1. React - Front end
+2. Ruby/Rails - Back end
+3. Postgres SQL - Database
+4. Heroku - Deployment
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Development Approach
+### Components
+1. App - App has all the main functions and is responsible for maintaining state.
+2. Header - Header is responsible for displaying number of jobs in each category and toggle between the job views
+3. Form - Form is responsible for creating a new job in the database based on user input.
+4. JobList - JobList is responsible for displaying all the jobs for each selected job category
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+### User Stories
+1. User should be able to add a new job
+2. User should be able to view the jobs list
+3. User should be able to access the job link
+4. User should be able to update the job status from new to applied / follow up or interviewed
+5. User should be able to switch between the job list views (New/Applied /Follow Up/ Interviewed)
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Possible Enhancements
+1. Adding more details about the job and adding more input fields to the form
+2. Display additional information about selected job in a modal
+3. Manage some notes for each job
+4. Ability for user to create and manage their own accounts
